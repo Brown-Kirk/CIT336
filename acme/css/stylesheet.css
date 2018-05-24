@@ -1,0 +1,275 @@
+* {
+   font-family: "Comic Sans MS";
+}
+html {
+    background-image: url("/acme/img/site/background.jpg");
+    background-size: 100%;
+    height: 100%;
+}
+body {
+    background-image: none;
+    background-color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+    max-width: 1024px;
+    display: block;
+    min-height: 100%;
+    position: relative;
+}
+#logo {
+    float: left;
+    margin-left: 1%;
+}
+#account {
+    float: right;
+    margin-right: 1%;
+    text-decoration: none;
+    color: #000000;
+}
+#header {
+    display: block;
+    vertical-align: middle;
+    height: 100px;
+    margin-left: 1%;
+    margin-right: 1%;
+    max-width: 1024px;
+    padding: 0em;
+    text-decoration: none;
+}
+#account a:link {
+    text-decoration: none;
+}
+#account h2 {
+    color: #000000;
+}
+main {
+    vertical-align: middle;
+    height: 100%;
+    max-width: 1024px;
+    width: 100%;
+    display: inline-block;
+}
+.title {
+    padding: 15px;
+}
+p {
+     margin: 0px;
+}
+section {
+    display: block;
+}
+footer:before {
+    content: " ";
+    display: block;
+    border-bottom: 3px solid black;
+    width: 100%;
+  }
+footer {
+    font-size: 14px;
+    text-align: center;
+    max-width: 1024px;
+    display: inline-block;
+    width: 100%;
+  }
+#featured {
+    padding: 0em;
+  }
+#featuredproduct {
+    background-image: url("/acme/img/site/rocketfeature.jpg");
+    background-size: 100% 100%;
+    /* To correctly align image, regardless of content height: */
+    display: inline-block;
+    
+}
+#productdetails {
+    width: 40%;
+    display: inline-block;
+    color: #990033;
+    padding: 0em;
+}
+#producttitle {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0em;
+}
+#productfeatures {
+    font-size: 18px;
+    padding: 0em;
+}
+a:link {
+    color: #0000ee;
+}
+
+
+/* 
+    Large screen nav menu adapted from https://codepen.io/blazzard-jason/pen/bqGgoE
+*/
+@media only screen and (min-width: 768px) {
+    nav {
+        background-color: #de2226;
+        margin-left: 0%;
+        margin-right: 0%;
+        max-width: 1024px;
+    }
+    .menu {
+        display: none;
+    }
+    nav ul {
+        list-style-type: none;
+        margin: 0em;
+        padding: 0em;
+        overflow: hidden;
+        text-align: left;
+    }
+
+
+    /*******************************************************/
+    /* Horizontal Menu: Flex Method */
+    nav ul { display: flex; }
+    nav li { flex: 1 1 100%; }
+
+    /* Horizontal Menu: Inline Method */
+    /*
+    nav {text-align: center;}
+    nav li {display: inline-block;}
+    */
+
+    /* Horizontal Menu: Float Method */
+    /*
+    nav li {float:left; margin-right:15px;}
+    main {clear:both;}
+    */
+    /*******************************************************/
+
+    nav a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        text-decoration: none;
+        font-size: 24px;
+    }
+
+    nav a:hover {
+        background-color: white;
+        color: #de2226;
+    }
+    #reviews {
+        float: right;
+        width: 50%;
+    }
+    .recipecontainer {
+        /* To correctly align image, regardless of content height: */
+        vertical-align: top;
+        display: inline-block;
+        /* To horizontally center images and caption */
+        text-align: center;
+        /* The width of the container also implies margin around the images. */
+        width: 20%;
+    }
+    #featuredproduct {
+        width: 100%;
+        height: 350px;
+        padding: 0em;
+    }
+    #productdetails {
+        width: 40%;
+        float: right;
+    }
+    section.imagecontainer {
+        width: 175px;
+        background-color: #A9A9A9;
+        display: inline-block;
+    }
+    .recipeimage {
+        width: 100px;
+        height: 100px;
+    }
+    .caption {
+        /* Make the caption a block so it occupies its own line. */
+        display: block;
+    }
+    #featuredrecipes {
+        padding: 15px;
+    }
+}
+
+/* 
+    Large screen nav menu adapted from https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_text
+*/
+@media only screen and (max-width: 767px) {
+    nav {
+        position: relative;
+        display: inline-block;
+        margin-left: 5%;
+        margin-right: 5%;
+        background-color: #de2226;
+        width: 90%;
+        color: white;
+        text-decoration: none;
+        max-width: 1024px;
+    }
+    #dropdown {
+        list-style-type: none;
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        padding: 0px 8px;
+        background-color: #de2226;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .menu {
+        padding: 0px 8px;
+    }
+    nav:hover #dropdown {
+        display: block;
+    }
+    nav a {        
+        background-color: #de2226;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    nav a:hover {        
+        background-color:#ffffff ;
+        color: #de2226;
+        text-decoration: none;
+    }
+    #reviews {
+        width: 90%;
+        padding: 15px;
+    }
+    .recipecontainer {
+        /* To correctly align image, regardless of content height: */
+        vertical-align: top;
+        display: inline-block;
+        /* To horizontally center images and caption */
+        text-align: center;
+        /* The width of the container also implies margin around the images. */
+        width: 40%;
+    }
+    .imagecontainer {
+        display: inline-block;
+        width: 100%;
+        background-color: #A9A9A9;
+    }
+    .recipeimage {
+        width: 100px;
+        height: 100px;
+    }
+    .caption {
+        /* Make the caption a block so it occupies its own line. */
+        display: block;
+    }
+    #featuredproduct {
+        width: 100%;
+        height: 350px;
+    }
+    #productdetails {
+        width: 50%;
+        float: right;
+    }
+    #featuredrecipes {
+        padding: 15px;
+    }
+}
