@@ -20,7 +20,7 @@
                         <p id="productfeatures">Quick lighting fuse<br>
                             NHTSA approved seat belts<br>
                             Mobile launch stand included</p>
-                        <a href="./home.php"><img src="./img/site/iwantit.gif" alt="I want it now!"></a>
+                        <a href="./home.php"><img src="./images/site/iwantit.gif" alt="I want it now!"></a>
                         <br><br><br>
                     </section>
                 </section>

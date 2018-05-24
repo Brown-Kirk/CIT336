@@ -35,12 +35,12 @@
                     </label>
                     <label for="invImage">
                         Product Image:<br>
-                        <input type="text" id="invImage" name="invImage" value="/acme/img/no-image.gif">
+                        <input type="text" id="invImage" name="invImage" value="/acme/images/no-image.gif">
                         <br>
                     </label>
                     <label for="invThumbnail">
                         Product Thumbnail:<br>
-                        <input type="text" id="invThumbnail" name="invThumbnail"  value="/acme/img/no-image.gif">
+                        <input type="text" id="invThumbnail" name="invThumbnail"  value="/acme/images/no-image.gif">
                         <br>
                     </label>
                     <label for="invPrice">

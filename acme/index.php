@@ -15,7 +15,6 @@
     }
     switch ($action){
         case 'something':
-
         break;
         default:
         include 'view/home.php';
