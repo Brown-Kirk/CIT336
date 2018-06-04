@@ -8,7 +8,7 @@
             include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/header.php';
             ?>
         <nav class="nav">
-            <?php echo $navList; ?>
+            <?php echo buildNav() ?>
         </nav>
         <main>
             <form action="../products/index.php" method="post">
@@ -25,7 +25,7 @@
                 <div class="field">
                     <label for="categoryName">
                         Category Name:<br>
-                        <input type="text" id="categoryName" name="categoryName">
+                        <input type="text" id="categoryName" name="categoryName" <?php if(isset($categoryname)){echo "value='$categoryname'";} ?> required>
                         <br>
                     </label>
                 </div>

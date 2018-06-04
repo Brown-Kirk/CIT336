@@ -10,6 +10,7 @@
         <?php include $path . '/acme/includes/nav.php'; ?>
         <main class="main">
             <?php include $path . '/acme/includes/main.php'; ?>
+            <?php echo buildNav(); ?>
             <h1>Server Error</h1>
             <p>The server experienced a problem</p>
         

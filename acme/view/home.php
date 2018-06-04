@@ -6,10 +6,7 @@
     <body>
         <?php include $_SERVER['DOCUMENT_ROOT'] . './acme/includes/header.php'; ?>
         <nav>
-        <?php 
-            // include $_SERVER['DOCUMENT_ROOT'] . './acme/includes/nav.php'; 
-            echo $navList;
-        ?>
+        <?php echo buildNav() ?>
         </nav>
         <main class="main">
             <?php include $_SERVER['DOCUMENT_ROOT'] . './acme/includes/main.php'; ?>
@@ -39,25 +36,25 @@
                 <h3>Featured Recipes</h3>
                 <section class="recipecontainer">
                     <section class="imagecontainer">
-                        <img src="img/recipes/bbqsand.jpg" alt="Pulled Roadrunner BBQ" class="recipeimage">
+                        <img src="/acme/images/recipes/bbqsand.jpg" alt="Pulled Roadrunner BBQ" class="recipeimage">
                     </section>
                     <a href="./" title="Pulled Roadrunner BBQ"><span class="caption">Pulled Roadrunner BBQ</span></a>
                 </section>
                 <section class="recipecontainer">
                     <section class="imagecontainer">
-                        <img src="img/recipes/potpie.jpg" alt="Roadrunner Pot Pie" class="recipeimage">
+                        <img src="/acme/images/recipes/potpie.jpg" alt="Roadrunner Pot Pie" class="recipeimage">
                     </section>
                     <a href="./" title="Roadrunner Pot Pie"><span class="caption">Roadrunner Pot Pie</span></a>
                 </section>
                 <section class="recipecontainer">
                     <section class="imagecontainer">
-                        <img src="img/recipes/soup.jpg" alt="Roadrunner Soup" class="recipeimage">
+                        <img src="/acme/images/recipes/soup.jpg" alt="Roadrunner Soup" class="recipeimage">
                     </section>
                     <a href="./" title="Roadrunner Soup"><span class="caption">Roadrunner Soup</span></a>
                 </section>
                 <section class="recipecontainer">
                     <section class="imagecontainer">
-                        <img src="img/recipes/taco.jpg" alt="Roadrunner Tacos" class="recipeimage">
+                        <img src="/acme/images/recipes/taco.jpg" alt="Roadrunner Tacos" class="recipeimage">
                     </section>
                     <a href="./" title="Roadrunner Tacos"><span class="caption">Roadrunner Tacos</span></a>
                 </section>

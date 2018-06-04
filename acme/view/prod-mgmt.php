@@ -6,7 +6,7 @@
     <body>
         <?php include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/header.php'; ?>
         <nav class="nav">
-            <?php echo $navList; ?>
+            <?php echo buildNav(); ?>
         </nav>
         <main>
             <div class="Product Management">

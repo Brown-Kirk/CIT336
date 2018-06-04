@@ -10,7 +10,7 @@
             ?>
         </header>
         <nav class="nav">
-            <?php echo $navList; ?>
+            <?php echo buildNav(); ?>
         </nav>
         <main>
             <div class="login">
@@ -28,25 +28,32 @@
                     <p> All fields required </p>
                     <label>
                         First name:<br>
-                        <input type="text" name="clientFirstname" id="clientFirstname">
+                        <input type="text" name="clientFirstname" id="clientFirstname" 
+                            <?php if(isset($clientFirstname)){echo "value='$clientFirstname'";}  ?> required>
                         <br>
                     </label>
 
                     <label>
                         Last name:<br>
-                        <input type="text" name="clientLastname" id="clientLastname">
+                        <input type="text" name="clientLastname" id="clientLastname" 
+                            <?php if(isset($clientLastname)){echo "value='$clientLastname'";}  ?> required>
                         <br>
                     </label>
 
                     <label>
                         Email address:<br>
-                        <input type="email" name="clientEmail" id="clientEmail">
+                        <input type="email" name="clientEmail" id="clientEmail" 
+                            <?php if(isset($clientEmail)){echo "value='$clientEmail'";}  ?> required 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                         <br>
                     </label>
 
                     <label>
                         Password:<br>
-                        <input type="password" name="clientPassword" id="clientPassword">
+                        <input type="password" name="clientPassword" id="clientPassword" required
+                               pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                        <br><span>Passwords must be at least 8 characters and contain at least 1 number, 
+                            1 capital letter, and 1 special character</span>
                     </label>
                     <label>
                         <br>
