@@ -2,6 +2,10 @@
     /*
      * Acme Controller
      */
+
+    // Create or access a Session
+    session_start();
+    
     // Get the database connection file
     require_once './library/connections.php';
     // Get the acme model for use as needed
@@ -12,6 +16,7 @@
     $categories = getCategories();
     $navList = buildNav();
     $action = filter_input(INPUT_POST, 'action');
+    
     if ($action == NULL){
         $action = filter_input(INPUT_GET, 'action');
     }

@@ -32,3 +32,70 @@ function regClient($clientFirstname, $clientLastname, $clientEmail, $clientPassw
     // Return the indication of success (rows changed)
     return $rowsChanged;
 }
+
+/*
+ * checkExistingEmail() will handle check if email adddress already registered
+ */
+
+function checkExistingEmail($clientEmail){
+    // Create database connection
+    $db = acmeConnect();
+    
+    // SQL statement selecting matching email address from database
+    $sql = 'SELECT clientEmail FROM clients WHERE clientEmail = :email';
+    
+    // Create the prepared statment using the acme connection
+    $stmt = $db->prepare($sql);
+
+    // Bind variable to value for email address
+    $stmt->bindValue(':email', $clientEmail, PDO::PARAM_STR);
+    
+    // Execute the SQL statement
+    $stmt->execute ();
+
+    // Set variable matchEmail to the value(s) returned  from SQL execution
+    $matchEmail = $stmt->fetch(PDO::FETCH_NUM);
+
+    // Close DB connection
+    $stmt->closeCursor();
+    
+    // Check to see if matchEmail is empty - if so, return 0, otherwise return 1
+    if (empty($matchEmail)){
+        return 0;
+    } else {
+        return 1;
+    }
+}
+  
+ /*
+ * getClient($email) Fetches client data based on email address entered
+ */
+
+function getClient($email){
+    
+    // Create database connection
+    $db = acmeConnect();
+    
+    // SQL statement selecting client info matching logged in email address
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword 
+            FROM clients 
+            WHERE clientEmail = :email';
+    
+    // Create the prepared statment using the acme connection
+    $stmt = $db->prepare($sql);
+    
+    // Bind variable to value for email address
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+
+    // Close DB connection
+    $stmt->execute();
+
+    // Set variable matchEmail to the value(s) returned  from SQL execution
+    $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Close DB connection
+    $stmt->closeCursor();
+
+    // Return $clientData values
+    return $clientData;
+}

@@ -7,7 +7,7 @@
         <?php include $_SERVER['DOCUMENT_ROOT'] . './acme/includes/header.php'; ?>
         <nav>
         <?php 
-            echo $navList;
+            echo buildNav();
         ?>
         </nav>
         <main class="main">

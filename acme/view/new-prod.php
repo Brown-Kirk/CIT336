@@ -70,7 +70,7 @@
                     </label>
                     <label for="categoryId">
                         Product Category:
-                        <?php echo $catList; ?>
+                        <?php echo buildCategoryList(); ?>
                         <br>
                     </label>
                     <label for="invVendor">

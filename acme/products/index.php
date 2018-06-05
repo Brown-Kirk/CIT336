@@ -2,33 +2,44 @@
     /*
      * Products Controller
      */
+
+    // Create or access a Session
+    session_start();
+    
     // Get the database connection file
     require_once '../library/connections.php';
     // Get the acme model for use as needed
+    require_once '../model/acme-model.php';
     require_once '../model/products-model.php';
     // Get the functions library
     require_once '../library/functions.php';
 
-    $navList = buildNav();
-    $categories = getCategories();
-    $catList = buildCategoryList();
+    //$navList = buildNav();
+    //$categories = getCategories();
+    //$catList = buildCategoryList();
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL){
         $action = filter_input(INPUT_GET, 'action');
         if($action == NULL ) {
-            $action= 'prod-mgmt';
+            $action = 'prod-mgmt';
         }
     }
     
-    $action = filter_input(INPUT_POST, 'action');
-    if ($action == NULL){
-        $action = filter_input(INPUT_GET, 'action');
-        if ($action == NULL){
-            $action= 'product-management';
+    $level = $_SESSION['clientData']['clientLevel'];
+        if($_SESSION['loggedin']){    
+        if ($level > 1){
+            // continue as normal
+        } else {
+            $action = 'denied';
         }
+    } else {
+        $action = 'denied';
     }
 
     switch ($action){
+        case 'denied':
+            header('location:/acme/index.php');
+            break;
         case 'new-cat':
             include '../view/new-cat.php';
             break;
@@ -89,6 +100,8 @@
                 exit;
             }
         default:
-            include '../view/prod-mgmt.php';
+            $message = "Nope, nope, nope. You're not faking it by manually adding an action!";
+            header('location:/acme/index.php');
+            break;
    }
 ?>

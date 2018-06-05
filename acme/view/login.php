@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php $pageTitle="Acme - Login"; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; ?>
+        <?php $pageTitle="Acme - Account Login"; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; ?>
     </head>
     <body>
         <header>
@@ -21,19 +21,19 @@
                 }
                 ?>
                 <!--end php-->
-                <form action="../accounts/index.php?action=login" method="post">
+                <form action="../accounts/index.php?action=Login" method="post">
                     <h1>Acme Login</h1>
                     <div class="field">
                         <label for="name">
                             Email Address:<br>
-                            <input type="email" id="name" name="username" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                            <input type="email" id="clientEmail" name="clientEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                             <br>
                         </label>
                     </div>
                     <div class="field">
                         <label for="pwd">
                             Password:<br>
-                            <input type="password" name="password" id="pwd" required
+                            <input type="password" name="clientPassword" id="clientPassword" required
                                pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             <br><span>Passwords must be at least 8 characters and contain at least 1 number, 
                             1 capital letter, and 1 special character</span>

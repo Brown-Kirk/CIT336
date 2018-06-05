@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php $pageTitle="Acme - Register"; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; ?>
+        <?php $pageTitle="Acme - Account Registration"; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; ?>
     </head>
     <body>
         <header>

@@ -39,8 +39,21 @@ body {
 #account a:link {
     text-decoration: none;
 }
-#account h2 {
+#account {
+    font-size: large;
+    font-weight: bold;
     color: #000000;
+}
+#account span {
+    font-size: large;
+}
+#logout {
+    float: right;
+    padding-top: 20px;
+}
+#productLink {
+    font-size: x-large;
+    padding-left: 20px;
 }
 main {
     vertical-align: middle;
@@ -113,6 +126,7 @@ span {
         margin-left: 0%;
         margin-right: 0%;
         max-width: 1024px;
+        color: white;
     }
     .menu {
         display: none;
@@ -153,11 +167,13 @@ span {
         font-size: 24px;
     }
 
+    nav a:link {
+        color: white;
+    }
     nav a:hover {
         background-color: white;
         color: #de2226;
-    }
-    #reviews {
+    }   #reviews {
         float: right;
         width: 50%;
     }
