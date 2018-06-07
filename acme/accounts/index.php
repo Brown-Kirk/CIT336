@@ -108,9 +108,62 @@
             session_destroy();
             //setcookie("firstname", "", time() - 3600);
             header('location:/acme/index.php');
-            exit;  
-        default:
-            include '../view/login.php';
+            exit;
+            
+        case 'client-update':
+            include '../view/client-update.php';
             break;
-   }
+        case 'updateClient':
+            $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+            $clientFirstname = filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING);
+            $clientLastname = filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING);
+            $clientEmail = filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL);
+            if (empty($clientId) || empty($ClientFirstname) || empty($clientLastname) || empty($clientEmail)) {
+                $message = '<p>Please complete all the information</p>';
+            }
+            $updateClientInfo = updateClient($clientId, $clientFirstname, $clientLastname, $clientEmail);
+            if ($updateClientInfo) {
+                $message = "<p>Congratulations $clientFirstname, your account was sucessfully updated.</p>";
+                $_SESSION['message'] = $message;
+                include '../view/admin.php';
+
+                exit;
+            } else {
+                $message = "<p>Error. $ClientFirstname was not updated.</p>";
+                $_SESSION['message'] = $message;
+                 include '../view/admin.php';
+                exit;
+            }
+            break;
+        case 'updatePassword':
+            $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
+            $clientPassword = filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING);
+            $passwordConfirm = filter_input(INPUT_POST, 'passwordConfirm', FILTER_SANITIZE_STRING);
+            if (empty($clientId) || empty($clientPassword)) {
+                $message = '<p>Please complete all the information</p>';
+            }
+            if($clientPassword === $passwordConfirm) {
+                $clientPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+                $clientPasswordUpdated = updatePassword($clientId, $clientPassword);
+            } else {
+                $message = "<p>Passwords do not match. Please try again.</p>";
+                $_SESSION['message'] = $message;
+                include '../view/client-update.php';
+                exit;
+            }
+            if ($clientPasswordUpdated) {
+                $message = "<p>Congratulations your password was sucessfully updated.</p>";
+                $_SESSION['message'] = $message;
+                include '../view/admin.php';
+                exit;
+            } else {
+                $message = "<p>Client ID is $clientId  - Error. Your password was not updated.</p>";
+                $_SESSION['message'] = $message;
+                include '../view/admin.php';
+                exit;
+            }
+            default:
+                include '../view/login.php';
+                break;
+       }
 ?>

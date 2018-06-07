@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php $pageTitle="Acme - Account Login"; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; ?>
+        <?php 
+            $pageTitle="Acme - Account"; 
+            include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; 
+            if (isset($_SESSION['message'])) {
+                $message = $_SESSION['message'];
+            }
+            $clientLevel = $_SESSION['clientData']['clientLevel'];
+        ?>
     </head>
     <body>
         <header>
@@ -13,31 +20,38 @@
             <?php echo buildNav(); ?>
         </nav>
         <main>
-            <?php
-                $firstname = $_SESSION['clientData']['clientFirstname'];
-                $lastname = $_SESSION['clientData']['clientLastname'];
-                $emailaddress = $_SESSION['clientData']['clientEmail'];
-                $level = $_SESSION['clientData']['clientLevel'];
-                echo "<section id='accountInfo'>
-                    <h1>$firstname $lastname</h1>
-                    <ul>
-                        <li>First name: $firstname</li>
-                        <li>Last name: $lastname</li>
-                        <li>Email: $emailaddress</li>
-                        <li>Level: $level</li>
-                    </ul>
-                    </section>";
-                if ($level == 3){
-                echo '<section id="productLink"><a href="/acme/products/index.php?action=prod-mgmt">Products</a><br><br></section>';
-                }
+            <section id='message'>
+                <?php
+                    if (isset($message)) {
+                        echo "<br> $message <br>";
+                        unset ($_SESSION['message']);
+                    }
                 ?>
+            </section>
+            <section id='accountInfo'>
+                <h1>Account Management</h1>
+                You are logged in<br>
+                
+                <br>
+                <a href='../accounts/index.php?action=client-update'>Update Account Information</a>
+                <br>
+            </section>
+            <section id='productManagement'>
+                <?php
+                    if ($clientLevel > 1){
+                    echo " 
+                            <h1>Product Management</h1>
+                            Click the link below to administer products in the Acme system.<br><br>
+                            <a id='productUpdateLink' href='/acme/products/index.php?action=prod-mgmt'>Product Management</a>
+                        ";
+                    }
+                ?>
+                <br>
+            </section>
         </main>
-
-        <footer>
-            <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
-            ?>
-        </footer>
+        <?php
+        include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
+        ?>
     </body>
 </html>
 

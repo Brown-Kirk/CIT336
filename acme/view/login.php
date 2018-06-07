@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php $pageTitle="Acme - Account Login"; include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; ?>
+        <?php 
+            $pageTitle="Acme - Account Login"; 
+            include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; 
+        ?>
     </head>
     <body>
         <header>
@@ -13,24 +16,23 @@
             <?php echo buildNav(); ?>
         </nav>
         <main>
-            <div class="login">
-                <!--php code if message is set-->
-                  <?php
-                if (isset($message)) {
-                    echo $message;
-                }
+            <section class="login">
+                <?php
+                    if (isset($message)) {
+                        echo "<br> $message <br>";
+                        unset ($_SESSION['message']);
+                    }
                 ?>
-                <!--end php-->
                 <form action="../accounts/index.php?action=Login" method="post">
                     <h1>Acme Login</h1>
-                    <div class="field">
+                    <section class="field">
                         <label for="name">
                             Email Address:<br>
                             <input type="email" id="clientEmail" name="clientEmail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                             <br>
                         </label>
-                    </div>
-                    <div class="field">
+                    </section>
+                    <section class="field">
                         <label for="pwd">
                             Password:<br>
                             <input type="password" name="clientPassword" id="clientPassword" required
@@ -38,7 +40,7 @@
                             <br><span>Passwords must be at least 8 characters and contain at least 1 number, 
                             1 capital letter, and 1 special character</span>
                         </label>
-                    </div>
+                    </section>
                     <input type="submit" name="submit" id="regbtn" value="Login">
                     <input type="hidden" name="action" value="Login">
                 </form
@@ -47,13 +49,10 @@
                     <p>If you do not yet have an account, please click the button below to register.</p>
                     <input type="submit" value="Create Account" />
                 </form>
-            </div>
+            </section>
         </main>
-
-        <footer>
-            <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
-            ?>
-        </footer>
+        <?php
+        include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
+        ?>
     </body>
 </html>

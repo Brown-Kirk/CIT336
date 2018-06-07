@@ -10,6 +10,14 @@
         </nav>
         <main class="main">
             <?php include $_SERVER['DOCUMENT_ROOT'] . './acme/includes/main.php'; ?>
+            <section>
+                <?php
+                    if (isset($message)) {
+                        echo "<br> $message <br>";
+                        unset ($_SESSION['message']);
+                    }
+                ?>
+            </section>
             <aside class="featured">
                 <section id="featuredproduct">
                     <section id="productdetails">

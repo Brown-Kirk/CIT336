@@ -51,9 +51,17 @@ body {
     float: right;
     padding-top: 20px;
 }
-#productLink {
-    font-size: x-large;
+#productManagement {
     padding-left: 20px;
+}
+#productManagement a {
+    font-weight: bold;
+}
+#accountInfo {
+    padding-left: 20px;
+}
+#accountInfo a {
+    font-weight: bold;
 }
 main {
     vertical-align: middle;

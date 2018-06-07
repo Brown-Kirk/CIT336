@@ -77,7 +77,7 @@ function getClient($email){
     $db = acmeConnect();
     
     // SQL statement selecting client info matching logged in email address
-    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword 
+    $sql = 'SELECT * 
             FROM clients 
             WHERE clientEmail = :email';
     
@@ -99,3 +99,58 @@ function getClient($email){
     // Return $clientData values
     return $clientData;
 }
+
+function getClientById($clientId) {
+
+    // Create database connection
+    $db = acmeConnect();
+    
+    // SQL statement selecting client info matching logged in email address
+    $sql = 'SELECT * 
+            FROM clients 
+            WHERE clientId = :clientId';
+    
+    // Create the prepared statment using the acme connection
+    $stmt = $db->prepare($sql);
+    
+    // Bind variable to value for email address
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
+
+    // Close DB connection
+    $stmt->execute();
+
+    // Set variable matchEmail to the value(s) returned  from SQL execution
+    $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Close DB connection
+    $stmt->closeCursor();
+
+    // Return $clientData values
+    return $clientData;
+}
+
+function updateClient($clientId, $clientFirstname, $clientLastname, $clientEmail){
+    $db = acmeConnect();
+    $sql = 'UPDATE clients SET clientFirstname = :clientFirstname, clientLastname = :clientLastname, clientEmail = :clientEmail WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+    $stmt->bindValue(':clientFirstname', $clientFirstname, PDO::PARAM_STR);
+    $stmt->bindValue(':clientLastname', $clientLastname, PDO::PARAM_STR);
+    $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $rowsChanged;
+ }
+   
+function updatePassword($clientId, $clientPassword) {
+    $db = acmeConnect();
+    $sql = 'UPDATE clients SET clientPassword = :clientPassword WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+    $stmt->bindValue(':clientPassword', $clientPassword, PDO::PARAM_STR);
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $rowsChanged;
+}   

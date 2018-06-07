@@ -1,22 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php $pageTitle="Welcome to Acme!"; include './includes/head.php'; ?>
+        <?php 
+            $pageTitle="Acme"; 
+            include  $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/head.php'; 
+            if (isset($_SESSION['message'])) {
+                $message = $_SESSION['message'];
+            }
+            $clientLevel = $_SESSION['clientData']['clientLevel'];
+        ?>
     </head>
     <body>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . './acme/includes/header.php'; ?>
-        <nav>
-        <?php 
-            echo buildNav();
-        ?>
+        <header>
+            <?php
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/header.php';
+            ?>
+        </header>
+        <nav class="nav">
+            <?php echo buildNav(); ?>
         </nav>
-        <main class="main">
-            <?php include $path . '/acme/includes/main.php'; ?>
-        
-        
-        
-        </main>
-        <?php include '/acme/includes/footer.php'; ?>
-    </body>
+        <main>
+            <section id='message'>
+                <?php
+                    if (isset($message)) {
+                        echo "<br> $message <br>";
+                        unset ($_SESSION['message']);
+                    }
+                ?>
+            </section>
 
-</html>   
+        </main>
+        <?php
+        include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
+        ?>
+    </body>
+</html>
+
