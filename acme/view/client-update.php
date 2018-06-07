@@ -31,7 +31,7 @@ $clientData=$_SESSION['clientData'];
                     }
                 ?>
             </section>
-            <h1>Update Account</h1><br>
+            <h1>Update Account</h1>
             <p>Please edit the fields below to update your account. </p>
             <section id="clientUpdateForm">
                 <form action="/acme/accounts/index.php?action=updateClient" method="post">
@@ -58,6 +58,7 @@ $clientData=$_SESSION['clientData'];
                             ?>
                         <br>
                         <input type="hidden" name="clientId" value="<?php if (isset($clientData['clientId'])) {echo $clientData['clientId'];} elseif (isset($clientId)) {echo $clientId;} ?>">
+                        <br>
                         <input type="submit" name="submit" value="Update Information">
                         <input type="hidden" name="action" value="updateClient">
                     </fieldset>
@@ -67,20 +68,20 @@ $clientData=$_SESSION['clientData'];
             <section id="passwordUpdateForm">
                 <form action="/acme/accounts/index.php?action=updatePassword" method="post">
                     <fieldset>
-                        <h1>Change Password</h1><br>
-                        <p> Enter your new password below. </p> <br>
+                        <h1>Change Password</h1>
+                        <p> Enter your new password below. </p>
+                        <span><i>Passwords must be at least 8 characters and contain at least one upper case, one lower case, one number, and one special character</i></span><br>
                             <label>
-                                Password:<br>
-                                <span><i>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</i></span>
+                                <br>Password:<br>
+                                
                                 <input type="password" name="clientPassword" id="clientPassword" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </label>
                             <label>
-                                Confirm:<br>
-                                <span><i>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</i></span>
+                                <br>Confirm:<br>
                                 <input type="password" name="passwordConfirm" id="passwordConfirm" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </label>
                         <label>
-
+                        <br><br>
                         <input type="submit" name="submit" value="Update Password">
                         <input type="hidden" name="action" value="updatePassword">
                         <input type="hidden" name="clientId" value="<?php if (isset($clientData['clientId'])) {echo $clientData['clientId'];} elseif (isset($clientId)) {echo $clientId;} ?>">

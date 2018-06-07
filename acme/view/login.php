@@ -16,13 +16,15 @@
             <?php echo buildNav(); ?>
         </nav>
         <main>
-            <section class="login">
+            <section id='message'>
                 <?php
                     if (isset($message)) {
                         echo "<br> $message <br>";
                         unset ($_SESSION['message']);
                     }
                 ?>
+            </section>
+            <section class="login">
                 <form action="../accounts/index.php?action=Login" method="post">
                     <h1>Acme Login</h1>
                     <section class="field">
