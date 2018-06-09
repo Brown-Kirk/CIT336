@@ -5,6 +5,10 @@ html {
     background-image: url("/acme/images/site/background.jpg");
     background-size: 100%;
     height: 100%;
+    box-sizing: border-box;
+}
+*, *:before, *:after{
+ box-sizing: inherit;
 }
 body {
     background-image: none;
@@ -123,6 +127,23 @@ a:link {
 span {
     font-size: x-small;
 }
+#prod-display{
+ margin: 0;
+ padding: 0;
+ display: flex;
+ flex-direction: column;
+}
+#prod-display li{
+ margin-bottom: .5em;
+ border: 1px #ccc solid;
+ list-style-type: none;
+ flex: 1 1 auto;
+}
+#prod-display li img{
+ width: 100%;
+ height: 200px;
+}
+
 
 
 /* 
@@ -219,7 +240,45 @@ span {
     #featuredrecipes {
         padding: 15px;
     }
+    #prod-display{
+        flex-flow: row wrap;
+        justify-content: flex-start;
+    }
+    #prod-display li{
+        max-width: 200px;
+        flex: 1 0 auto;
+        text-align: center;
+        max-height: 400px; 
+    }
+    #productDetail {
+        display: inline-block;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #prod-image {
+        display: inline-block;
+        width: 50%;
+        float: left;
+        
+    }
+    #prod-image img{
+        width: 80%;
+        max-width: 400px;
+        align-self: flex-end;
+        float: right;
+        padding-right: 10px;
+    }
+    #prod-details {
+        display: inline-block;
+        width: 50%;
+        float: right;
+        align-items: baseline;
+        padding-left: 10px;
+
+    }
 }
+
 
 /* 
     Large screen nav menu adapted from https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_text
@@ -292,11 +351,43 @@ span {
         width: 100%;
         height: 350px;
     }
-    #productdetails {
-        width: 50%;
-        float: right;
+
+    #productDetail {
+        display: inline-block;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
     }
-    #featuredrecipes {
-        padding: 15px;
+    #prod-image {
+        display: inline-block;
+        width: 90%;
+        float: none;
+        
+    }
+    #prod-image img{
+        width: 90%;
+        max-width: 400px;
+        align-self: flex-end;
+        float: none;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    #prod-details {
+        display: inline-block;
+        width: 90%;
+        float: none;
+        align-items: baseline;
+        padding-left: 10px;
+        max-width: 400px
+    }
+    #prod-display{
+        flex-flow: row wrap;
+        justify-content: flex-start;
+    }
+    #prod-display li{
+        max-width: 200px;
+        flex: 1 0 auto;
+        text-align: center;
+        max-height: 400px; 
     }
 }

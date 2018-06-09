@@ -143,3 +143,29 @@ function deleteProduct($invId) {
     $stmt->closeCursor();
     return $rowsChanged;
 }
+
+function getProductsByCategory($type) {
+    
+    $db = acmeConnect();
+    $sql = 'SELECT * FROM inventory WHERE categoryId IN (SELECT categoryId FROM categories WHERE categoryName = :catType)';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':catType', $type, PDO::PARAM_STR);
+    $stmt->execute();
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $products;
+    
+}
+
+function getProductDetails ($invId){
+    
+    $db = acmeConnect();
+    $sql = 'SELECT * FROM inventory WHERE invId = :invId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
+    $stmt->execute();
+    $products = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $products;
+    
+}

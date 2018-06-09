@@ -35,12 +35,12 @@
                         </label>
                         <label for="invImage">
                             Product Image:<br>
-                            <input type="text" id="invImage" name="invImage"  <?php if(isset($invImage)){echo "value='$invImage'";} else {echo "value='/acme/images/no-image.gif'";} ?> required>
+                            <input type="text" id="invImage" name="invImage"  <?php if(isset($invImage)){echo "value='$invImage'";} else {echo "value='/acme/images/no-image.png'";} ?> required>
                             <br>
                         </label>
                         <label for="invThumbnail">
                             Product Thumbnail:<br>
-                            <input type="text" id="invThumbnail" name="invThumbnail"  <?php if(isset($invThumbnail)){echo "value='$invThumbnail'";} else {echo "value='/acme/images/no-image.gif'";} ?> required >
+                            <input type="text" id="invThumbnail" name="invThumbnail"  <?php if(isset($invThumbnail)){echo "value='$invThumbnail'";} else {echo "value='/acme/images/no-image.png'";} ?> required >
                             <br>
                         </label>
                         <label for="invPrice">

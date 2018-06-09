@@ -56,3 +56,40 @@ function getCategories() {
 }
 
 
+
+function buildProductsDisplay($products) {
+    
+    $pd = '<ul id="prod-display">';
+    foreach ($products as $product) {
+        
+        $pd .='<li>';
+        $pd .= "<a href='/acme/products/index.php?action=prod-detail&id=$product[invId]'><img src='$product[invThumbnail]' alt='Image of $product[invName] on Acme.com'>";
+        $pd .= '<hr>';
+        $pd .= "<h2>$product[invName]</h2></a>";
+        $pd .= "<p>$$product[invPrice]</p>";
+        $pd .= '</li>';
+    }
+    
+    $pd .= '</ul>';
+    return $pd;
+    
+}
+
+function buildProductsDetail($product) {
+    
+    $pd = "<section id='prod-image'>";
+    $pd .= "<img src='$product[invImage]' alt='Image of $product[invImage] on Acme.com'><br>";
+    $pd .= "</section>";
+    $pd .= "<section id='prod-details'>";
+    $pd .= "<h1>$product[invName]</h1>";
+    $pd .= "<h2>Price: $$product[invPrice]</h2>";
+    $pd .= "$product[invDescription]<br><br>";
+    $pd .= "Size: $product[invSize]<br>";
+    $pd .= "Weight: $product[invWeight]<br>";
+    $pd .= "Quantity: $product[invStock]<br>";
+    $pd .= "Location: $product[invLocation]<br>";
+    $pd .= "Style: $product[invStyle]<br>";
+    $pd .= "Vendor: $product[invVendor]";
+    $pd .= "</section>";
+    return $pd;
+}

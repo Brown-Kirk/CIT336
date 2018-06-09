@@ -175,6 +175,30 @@
                 header('location: /acme/products/');
                 exit;
             }
+        case 'category':
+            $category = filter_input(INPUT_GET, 'type',FILTER_SANITIZE_STRING);
+            $products = getProductsByCategory($category);
+            if(!count($products)){
+                $message= "<p class='notice'>Sorry, no $category products couild be found.</p>";
+            } else {
+                $prodDisplay = buildProductsDisplay($products);
+            }
+            include '../view/category.php';
+            exit;
+        case 'prod-detail':
+            $productId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
+            $product = getProductDetails($productId);
+
+            if(!count($product)){
+                $message = "<p class='notice'>Sorry, no $prodId could be found.</p>";
+                //        } else if (!count($prodThumbnails)) {
+                //            $prodDetail = buildProductsDetail($product);
+            } else {
+                $prodDetail = buildProductsDetail($product);
+            }
+            include '../view/prod-detail.php';
+            break;            
+            exit;
         default:
             header('location:/acme/');
             break;
