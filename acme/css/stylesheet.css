@@ -263,8 +263,6 @@ span {
         
     }
     #prod-image img{
-        width: 80%;
-        max-width: 400px;
         align-self: flex-end;
         float: right;
         padding-right: 10px;
@@ -276,6 +274,13 @@ span {
         align-items: baseline;
         padding-left: 10px;
 
+    }
+    #prod-thumbs {
+        display: inline-block;
+        width: 50%;
+        float: right;
+        align-items: baseline;
+        padding-left: 10px;
     }
 }
 
@@ -366,7 +371,6 @@ span {
     }
     #prod-image img{
         width: 90%;
-        max-width: 400px;
         align-self: flex-end;
         float: none;
         padding-right: 10px;
@@ -378,16 +382,17 @@ span {
         float: none;
         align-items: baseline;
         padding-left: 10px;
-        max-width: 400px
     }
+    #prod-thumbs {
+        display: inline-block;
+        width: 90%;
+        list-style-type: none;
+        float: none;
+        align-items: baseline;
+        padding-left: 10px;
+    }    
     #prod-display{
         flex-flow: row wrap;
         justify-content: flex-start;
-    }
-    #prod-display li{
-        max-width: 200px;
-        flex: 1 0 auto;
-        text-align: center;
-        max-height: 400px; 
     }
 }

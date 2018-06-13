@@ -18,16 +18,10 @@
             <?php echo buildNav() ?>
         </nav>
         <main>
-            <section id='message'>
-                <?php
-                    if (isset($message)) {
-                        echo "<br> $message <br>";
-                        unset ($_SESSION['message']);
-                    }
-                ?>
-            </section>            
             <section id="productDetail">
-                <?php echo $prodDetail; ?>
+                <?php if(isset($message)){ echo $message; } ?>
+                <?php if(isset($prodDetail)){ echo $prodDetail; } ?>
+                <?php if(isset($thumbnails)){ echo $thumbnails; } ?>
             </section>
         </main>
         <?php

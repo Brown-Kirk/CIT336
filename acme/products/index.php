@@ -13,6 +13,7 @@
     require_once '../model/products-model.php';
     // Get the functions library
     require_once '../library/functions.php';
+    require_once '../model/uploads-model.php';
 
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL){
@@ -188,13 +189,12 @@
         case 'prod-detail':
             $productId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
             $product = getProductDetails($productId);
-
+            $prodThumbnails = getThumbnails($productId);
             if(!count($product)){
                 $message = "<p class='notice'>Sorry, no $prodId could be found.</p>";
-                //        } else if (!count($prodThumbnails)) {
-                //            $prodDetail = buildProductsDetail($product);
             } else {
                 $prodDetail = buildProductsDetail($product);
+                $thumbnails =buildProdThumbnails($prodThumbnails);
             }
             include '../view/prod-detail.php';
             break;            
