@@ -26,12 +26,6 @@
             </section>  
             <section id='reviewUpdate'>
                 <h1>Review Update</h1>
-                <?php
-                if (isset($message)) {
-                    echo $message;
-                }
-                ?>
-
                 <form method="post" action="/acme/reviews/index.php" id="reviewform">
                     <fieldset>
                         <label for="reviewtext">Review Text</label><br>
@@ -42,9 +36,7 @@
                                 echo $review['reviewText'];
                             }
                             ?></textarea><br>
-
                         <button type="submit" name="updateReview" id="updateReview">Update Review</button>
-                        <!-- Add the action key - value pair -->
                         <input type="hidden" name="action" value="updateReview">
                         <input type="hidden" name="invid" value="<?php
                         if (isset($reviewInfo['invId'])) {
@@ -54,11 +46,11 @@
                         }
                         ?>">
                         <input type="hidden" name="reviewid" value="<?php
-                        if (isset($reviewInfo['reviewId'])) {
-                            echo $reviewInfo['reviewId'];
-                        } elseif (isset($reviewId)) {
-                            echo $reviewId;
-                        }
+                            if (isset($reviewInfo['reviewId'])) {
+                                echo $reviewInfo['reviewId'];
+                            } elseif (isset($reviewId)) {
+                                echo $reviewId;
+                            }
                         ?>">
                     </fieldset>
                 </form>                    

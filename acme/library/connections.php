@@ -3,6 +3,8 @@
 /*
  *  Database Connection
  */
+
+// Copied from the lesson - too tired to comment. It connects to the database. :-)
 function acmeConnect(){
     $server = 'localhost';
     $dbname= 'acme';
