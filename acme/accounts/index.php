@@ -14,6 +14,7 @@
     require_once '../model/accounts-model.php';
     // Get the functions library
     require_once '../library/functions.php';
+    require_once '../model/reviews-model.php';
     
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL){
@@ -100,11 +101,17 @@
             array_pop($clientData);
             // Store the array into the session
             $_SESSION['clientData'] = $clientData;
+            $_SESSION['firstname'] = $clientData['clientFirstname'];
+            $_SESSION['lastname'] = $clientData['clientLastname'];
+            setcookie('firstname', "", strtotime('+1 week'), '/');
+            $clientId = $_SESSION['clientData']['clientId'];
+            $clientFirstName = $_SESSION['clientData']['clientFirstname'];
             // Send them to the admin view
             include '../view/admin.php';
             exit;
             break;
         case 'Logout':
+            setcookie('firstname', "", strtotime('-1 week'), '/');
             session_destroy();
             //setcookie("firstname", "", time() - 3600);
             header('location:/acme/index.php');
@@ -125,6 +132,12 @@
             if ($updateClientInfo) {
                 $message = "<p>Congratulations $clientFirstname, your account was sucessfully updated.</p>";
                 $_SESSION['message'] = $message;
+                $_SESSION['clientData'] = $clientData;
+                $_SESSION['firstname'] = $clientData['clientFirstname'];
+                $_SESSION['lastname'] = $clientData['clientLastname'];
+                setcookie('firstname', "", strtotime('+1 week'), '/');
+                $clientId = $_SESSION['clientData']['clientId'];
+                $clientFirstName = $_SESSION['clientData']['clientFirstname'];
                 include '../view/admin.php';
 
                 exit;
@@ -162,6 +175,22 @@
                 include '../view/admin.php';
                 exit;
             }
+            case 'loggedin':
+                if (isset($_SESSION['loggedin'])) {
+                    $clientId = $_SESSION['clientData']['clientId'];
+                    $clientFirstName = $_SESSION['clientData']['clientFirstname'];
+                    $clientRevName = substr($clientFirstName, 0, 1) . $_SESSION['clientData']['clientLastname'];
+                    $clientReviewsArray = getReviewByClient($clientId);
+                    if (isset($clientReviewsArray)) {
+                        $reviewList = buildClientRevsDisplay($clientReviewsArray, $clientRevName);
+                    }
+                    include '../view/admin.php';
+                    exit;
+                } else {
+                    header("Location: /acme/");
+                    exit;
+                }
+                break;
             default:
                 include '../view/login.php';
                 break;

@@ -75,7 +75,7 @@
             </section>
         </main>
         <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
         ?>
     </body>
 </html>

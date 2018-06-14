@@ -14,6 +14,7 @@
     // Get the functions library
     require_once '../library/functions.php';
     require_once '../model/uploads-model.php';
+    require_once '../model/reviews-model.php';
 
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL){

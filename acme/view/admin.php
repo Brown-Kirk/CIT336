@@ -48,9 +48,24 @@
                 ?>
                 <br>
             </section>
+            <section id='reviewInfo'>
+                <h1>Manage Your Product Reviews</h1>
+                <?php 
+                    $reviews = getReviewbyClient($_SESSION['clientData']['clientId']);
+                    foreach ($reviews as $review) {
+                        $reviewTime = strftime("%d %B, %Y ", strtotime($review ['reviewDate']));
+                        $reviewProduct = $review['invName'];
+                        echo "<div><p>$reviewProduct (Reviewed on $reviewTime) ";
+                        echo "<a href='/acme/reviews?action=editReview&id=$review[reviewId]' title='Click to Edit'>Edit</a> ";
+                        echo " <a href='/acme/reviews?action=deleteReview&id=$review[reviewId]' title='Click to Delete'>Delete</a></p>";
+                    }
+                    echo "<br>"
+                ?>
+                
+            </section>
         </main>
         <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/includes/footer.php';
         ?>
     </body>
 </html>

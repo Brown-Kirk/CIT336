@@ -40,6 +40,12 @@ body {
     padding: 0em;
     text-decoration: none;
 }
+#account {
+    float: right;
+    margin-right: 1%;
+    text-decoration: none;
+    color: #000000;
+}
 #account a:link {
     text-decoration: none;
 }
@@ -65,6 +71,12 @@ body {
     padding-left: 20px;
 }
 #accountInfo a {
+    font-weight: bold;
+}
+#reviewInfo {
+    padding-left: 20px;
+}
+#reviewInfo a {
     font-weight: bold;
 }
 main {
